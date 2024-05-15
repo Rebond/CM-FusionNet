@@ -97,7 +97,7 @@ class SCAW(nn.Module):
         return out
 
 
-class STSTransformerBlock(nn.Module):
+class E2FTF(nn.Module):
     def __init__(self, emb_size1,emb_size2,num_heads=5,drop_p=0.5,forward_expansion=4,forward_drop_p=0.5):
         super().__init__()
         self.emb_size = emb_size1
@@ -205,7 +205,7 @@ class MS_FusionNet(nn.Module):
             nn.AdaptiveAvgPool2d((1,8)),
             nn.Dropout2d(0.5)
         )
-        self.fusinTB=STSTransformerBlock(40,40)
+        self.fusinTB=E2FTF(40,40)
 
         self.feaLen=(40)*8
         self.classify = nn.Sequential(
