@@ -167,7 +167,7 @@ class E2FTF(nn.Module):
         x = rearrange(x, 'b t e -> b e 1 t')
         return x
 
-class MS_FusionNet(nn.Module):
+class CM_FusionNet(nn.Module):
     def __init__(self,classNum=2,channele=17,channelo=7):
         super().__init__()
 
@@ -239,6 +239,6 @@ class MS_FusionNet(nn.Module):
 if __name__ == '__main__':
     x=torch.randn(32,17,1600) # EEG data with 17 channel * 1600 timepoint
     y=torch.randn(32,7,1000) #  EOG data with 7 channel * 1000 timepoint
-    model=MS_FusionNet()
+    model=CM_FusionNet()
     pre_y=model(x,y)
     print("pre_y.shape:",pre_y.shape)
